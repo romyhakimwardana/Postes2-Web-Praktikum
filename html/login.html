@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-login.css">
+    <link rel="icon" href="../gambar/Bigreds-removebg-preview.png">
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <div class="konten">
+        <form>
+            <span class="sub">Email</span>
+            <input type="email" id="email" placeholder="Masukkan Email" required >
+            <span class="sub">Password</span>  
+            <input type="password" id="pass" placeholder="Masukkan Password">
+            <br>
+            <input type="submit" id="lgn" value="Login" cursorshover="true">
+        </form>
+        <p class="akun">
+            Belum Mempunyai Akun ?
+            <a href="../html/daftar.html">Daftar</a>
+        </p>
+    </div>
+</body>
+<script>
+const email = document.getElementById("email");
+const pass = document.getElementById("pass");
+
+form.addEventListener("lgn", function(e){
+e.preventDefault();
+
+const loc_email = localStorage.getItem("email");
+const loc_pass = localStorage.getItem("pass");
+
+if(email.value == loc_email && pass.value == loc_pass){
+    alert("berhasil login");
+    window.location.href = "beranda.html";
+} else {
+    alert("gagal login");
+}
+});
+</script>
+</html>

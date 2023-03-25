@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-profil.css">
+    <link rel="icon" href="../gambar/Bigreds-removebg-preview.png">
+    <title>Profil</title>
+</head>
+<body>
+    <nav>
+        <a href="beranda.html" class="side-img">
+        <img src="../gambar/LOGO-IOLSC-1.svg" width="100px">
+        <ul>
+            <li>
+                <a href="../html/tentang.html">Tentang</a>
+            </li>
+            <li>
+                <a href="../html/form.html">Form</a>
+            </li>
+            <li>
+                <a href="../html/profil.html">Profil</a>
+            </li>
+            <li>
+                <a class="keluar" href="../html/login.html"><img class="gambar" src="../gambar/logout.png" width="30px"></a>
+            </li>
+        </ul>
+        </a>
+    </nav>
+    <div id="profil">
+        <div class="konten">
+            <div class="isi">
+        <header style="text-align: center;">
+            <img src="../gambar/Profil.png" width="200" height="200" style="border-radius: 50%;"/>
+            <br>
+            <br>
+            <h3>Member</h3>
+            <br>
+            <p>Nama: <span id="nama"></span></p>
+            <br>
+            <p >Email: <span id="email"></span></p>
+            <br>
+            <p >Gender: <span id="status"></span></p>
+            <br>
+            <p >Agama: <span id="agama"></span></p>
+            <br>
+            <p >Pemain Favorit: <span id="hobi"></span></p>
+        </header>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <hr>
+        <div class="foot">
+            <img src="../gambar/BR-IOLSC.png" width="150px">
+            <p> Hak Cipta © 2023 - Romy Hakim Wardana</p>
+        </div>
+    </footer>
+</body>
+<script>
+    
+const dataForm = sessionStorage.getItem('dataUserKey')
+const userForm = JSON.parse(dataForm)
+
+const form = document.getElementById('form')
+const nama = document.getElementById('nama')
+    const email = document.getElementById('email')
+    const st = document.getElementById('status')
+    const a = document.getElementById('agama')
+    const hobi = document.getElementById('hobi')
+
+
+nama.innerHTML = " " + userForm[0]["Nama"]
+email.innerHTML = " " + userForm[0]["email"]
+st.innerHTML = " " + userForm[0]["status"]
+a.innerHTML = " " + userForm[0]["agama"]
+
+let hobiValue = ""
+if (userForm[0]["MoSalah"]) {
+hobiValue += userForm[0]["MoSalah"] + " , " 
+}
+if (userForm[0]["VanDijk"]) {
+hobiValue += userForm[0]["VanDijk"] + " " + " and "
+}
+if (userForm[0]["Thiago"]) {
+hobiValue += userForm[0]["Thiago"] + " "
+}
+hobi.innerHTML = " " + hobiValue
+</script>
+</html>

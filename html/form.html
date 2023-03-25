@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-form.css">
+    <link rel="icon" href="../gambar/Bigreds-removebg-preview.png">
+    <title>Form</title>
+</head>
+<body>
+    <nav>
+        <a href="../html/beranda.html" class="side-img">
+        <img src="../gambar/LOGO-IOLSC-1.svg" width="100px">
+        <ul>
+            <li>
+                <a href="../html/tentang.html">Tentang</a>
+            </li>
+            <li>
+                <a href="../html/form.html">Form</a>
+            </li>
+            <li>
+                <a href="../html/profil.html">Profil</a>
+            </li>
+            <li>
+                <a class="keluar" href="../html/login.html"><img class="gambar" src="../gambar/logout.png" width="30px"></a>
+            </li>
+        </ul>
+        </a>
+    </nav>
+    <div id="form">
+        <div class="konten">
+            <h1>Form Pendaftaran</h1>
+            <div class="isi">
+                <form>
+                    <div class="detail">
+                        <div class="kotak">
+                    Nama 
+                    <input type="text" id="nama" name="nama"placeholder="Masukkan Nama" required >
+                        </div>
+                        <div class="kotak"> 
+                    
+                    Email
+                    <input type="email" name="email" id="email" placeholder="Masukkan Email" required >
+                        </div>
+                        <div class="kotak">
+                    Gender
+                    <select id="status">
+                        <option></option>
+                        <option>Laki-laki</option>
+                        <option>Perempuan</option>
+                    </select>
+                        </div>
+                        <div class="kotak">
+                    Agama
+                    <select id="agama">
+                        <option></option>
+                        <option>Islam</option>
+                        <option>Kristen</option>
+                        <option>Katolik</option>
+                        <option>Buddha</option>
+                        <option>Hindu</option>
+                        <option>Konghucu</option>
+                    </select>
+                        </div>
+                        <div class="kotak2">
+                    Pemain Favorit
+                    <br>
+                    <input type="checkbox" id="MoSalah" value="Mo Salah"> 
+                    <label for="Mo Salah">Mo Salah</label>
+                    <br>
+                    <input type="checkbox" id="VanDijk" value="van Dijk"> 
+                    <label for="Van Dijk">Van Dijk</label> 
+                    <br>
+                    <input type="checkbox" id="Thiago" value="Thiago"> 
+                    <label for="Thiago">Thiago</label>
+                        </div>
+                        <div class="kotak">
+                    Alasan Memilih Pemain Tersebut?
+                    <br>
+                    <textarea class="textarea" rows="5" cols="40" id="alasan" placeholder="Masukkan teks di sini"></textarea>
+                        </div>
+                        <div class="kotak2">
+            
+                    Apakah anda yakin untuk mengikuti aturan yang ada di Bigreds Samarinda?
+                    <br>
+                    <br>
+                    <input type="radio" id="y" name="Angkatan">Ya
+                    <input type="radio" id="t" name="Angkatan">Tidak
+                        </div>
+                
+				<div class="button">
+					<input type="submit">
+				</div>
+                        <div id="popup">
+                            <div class="window">
+                            <a href="#" class="close" title="Close">X</a>
+                            <h2>Terima Kasih Form Telah Terisi</h2>
+                            </div>
+                        </div>
+                </div>
+                </form>
+            </div> 
+        </div>
+        
+    </div>
+
+
+
+    
+    <footer>
+        <hr>
+        <div class="foot">
+            <img src="../gambar/BR-IOLSC.png" width="150px">
+            <p> Hak Cipta © 2023 - Romy Hakim Wardana</p>
+        </div>
+    </footer>
+
+
+
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    
+        crossorigin="anonymous"></script>
+        <script>
+            $(function() {
+                $("input[name='numonly']").on('input', function(e) {
+                    $(this).val($(this).val().replace(/[^0-9]/g, ''))
+                })
+                })
+                </script>
+        
+        <script>
+    const form = document.getElementById('form')
+    const nama = document.getElementById('nama')
+    const email = document.getElementById('email')
+    const st = document.getElementById('status')
+    const a = document.getElementById('agama')
+    const hobi1 = document.getElementById('MoSalah')
+    const hobi2 = document.getElementById('VanDijk')
+    const hobi3 = document.getElementById('Thiago')
+    
+    const validasiHuruf = /^[a-zA-Z ]+$/;
+    
+    
+    
+    
+    const dataForm = []	
+    
+ 
+    
+    form.addEventListener('submit', function(event){
+        event.preventDefault()
+        let hobi1Value = '';
+		let hobi2Value = '';
+	
+		if(hobi1.checked) {
+			hobi1Value = hobi1.value;
+		}
+		if(hobi2.checked) {
+			hobi2Value = hobi2.value;
+		}
+
+        if(hobi3.checked) {
+			hobi3Value = hobi3.value;
+		}
+    
+        if(nama.value.match(validasiHuruf)){
+            dataForm.push({
+                "Nama": nama.value,
+                "email": email.value,
+                "status": st.value,
+                "agama": a.value,
+                "MoSalah": hobi1.value,
+                "VanDijk": hobi2.value,
+                "Thiago": hobi3.value
+            })
+    
+            let dataUserString = JSON.stringify(dataForm);
+            sessionStorage.setItem('dataUserKey', dataUserString);
+    
+            alert("pendaftaran berhasil")
+            window.location.href = "profil.html"
+        }else{
+            alert("data tidak boleh kosong")
+        }
+    })
+    var inputs = document.querySelectorAll('.button_img')
+    
+    for (var i = 0, len = inputs.length; i < len; i++) {
+    customInput(inputs[i])
+    }
+    
+    function customInput (el) {
+    const fileInput = el.querySelector('[type="file"]')
+    const label = el.querySelector('[data-js-label]')
+    
+    fileInput.onchange =
+    fileInput.onmouseout = function () {
+        if (!fileInput.value) return
+        
+        var value = fileInput.value.replace(/^.*[\\\/]/, '')
+        el.className += ' -chosen'
+        label.innerText = value
+    }}
+        </script>
+</body>
+</html>

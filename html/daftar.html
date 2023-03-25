@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/style-daftar.css">
+    <link rel="icon" href="../gambar/Bigreds-removebg-preview.png">
+    <title>Daftar</title>
+</head>
+<body>
+    <h1>Daftar</h1>
+    <div class="konten">
+        <form id="fr">
+            <span class="sub">Email</span>
+            <input type="email" id="email" placeholder="Masukkan Email" required>
+            <span class="sub">Nama</span>
+            <input type="text" id="nama" placeholder="Masukkan Nama" required>
+            <span class="sub">Password</span>  
+            <input type="password" id="pass" placeholder="Masukkan Password">
+            <br>
+            <input type="submit" id="dftr" value="Daftar" cursorshover="true">
+        </form>
+        <p class="akun">
+            Telah Mempunyai Akun ?
+            <a href="../html/login.html">Login</a>
+        </p>
+    </div>
+</body>
+<script>
+	const tombol = document.getElementById("dftr")
+tombol.onclick = daftar;
+
+function daftar(e){
+    e.preventDefault();
+    const nama = document.getElementById("nama").value;
+    const email = document.getElementById("email").value;
+    const pass = document.getElementById("pass").value;
+
+localStorage.setItem("nama",nama);
+localStorage.setItem("email",email);
+localStorage.setItem("password",pass);
+
+alert("berhasil mendaftar akun")
+window.location.href = "login.html";
+    }
+
+</script>
+</html>
